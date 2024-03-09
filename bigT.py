@@ -1,15 +1,18 @@
 import sys
 from antlr4 import *
-from ExprLexer import ExprLexer
-from ExprParser import ExprParser
+from BigTLexer import BigTLexer
+from BigTParser import BigTParser
 from VisitorInterp import VisitorInterp
 
 def main(argv):
-    input_stream = input()
-    lexer = ExprLexer(input_stream)
+    input_stream = InputStream(sys.stdin.readline())
+    lexer = BigTLexer(input_stream)
     stream = CommonTokenStream(lexer)
-    parser = ExprParser(stream)
-    tree = parser.start_()
+    parser = BigTParser(stream)
+    tree = parser.progama_minipar()
+
+    visitor = VisitorInterp()
+    visitor.visit(tree)
 
 if __name__ == '__main__':
     main(sys.argv)

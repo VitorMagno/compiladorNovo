@@ -1,1 +1,1 @@
-antlr4 -v 4.13.1 -Dlanguage=Python3 BigT.g4
+antlr4 -o build -Dlanguage=Python3 BigT.g4
